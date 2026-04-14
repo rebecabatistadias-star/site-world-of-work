@@ -5,62 +5,55 @@
     box-sizing: border-box;
 }
 
-/* Variáveis de cor e tipografia para manter consistência visual no site */
+/* Variáveis simples de cor para manter o site organizado */
 :root {
-    --bg: #f8f3e8;
-    --surface: #fffdf8;
-    --surface-soft: #f1e5cd;
-    --text: #1f2940;
-    --text-soft: #5f6780;
-    --primary: #c16a2a;
-    --primary-dark: #8f4715;
-    --accent: #214e5a;
-    --border: #dbc8a5;
-    --shadow: 0 16px 40px rgba(31, 41, 64, 0.08);
+    --background: #f4efe3;
+    --surface: #ffffff;
+    --border: #d8c5aa;
+    --text: #2d2d2d;
+    --muted: #5f5f5f;
+    --primary: #9c5722;
+    --primary-dark: #6a3b1a;
 }
 
-/* Configurações gerais do corpo da página */
+/* Corpo básico da página */
 body {
     min-height: 100vh;
-    background:
-        radial-gradient(circle at top left, rgba(193, 106, 42, 0.14), transparent 26%),
-        linear-gradient(180deg, #fffaf0 0%, var(--bg) 100%);
+    background: var(--background);
     color: var(--text);
-    font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
 }
 
-/* Estilos base para títulos e links */
+/* Estilos simples para títulos e links */
 h1,
 h2,
 h3 {
-    font-family: Georgia, "Times New Roman", serif;
     line-height: 1.2;
 }
 
 a {
-    color: inherit;
+    color: var(--primary);
     text-decoration: none;
 }
 
-/* Classe utilitária que centraliza o conteúdo e limita a largura */
+a:hover {
+    text-decoration: underline;
+}
+
+/* Conteúdo central com largura máxima */
 .container {
     width: min(1100px, calc(100% - 2rem));
     margin: 0 auto;
 }
 
-/* Cabeçalho fixo para manter o menu sempre visível */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 250, 240, 0.9);
-    border-bottom: 1px solid rgba(219, 200, 165, 0.8);
+/* Cabeçalho do site */
+.cabecalho {
+    background: #fff;
+    border-bottom: 1px solid var(--border); /*Separação sutil do topo*/
 }
 
-/* Organização interna do cabeçalho */
-.header-wrap {
+.topo {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,333 +61,277 @@ a {
     padding: 1rem 0;
 }
 
-/* Marca principal do site */
-.brand {
-    font-family: Georgia, "Times New Roman", serif;
+.marca {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--primary-dark);
 }
 
-/* Bloco do menu de navegação */
-.site-nav {
+.menu {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
 }
 
-.site-nav a {
-    padding: 0.55rem 0.9rem;
+.menu a {
+    display: inline-block;
+    padding: 0.5rem 0.9rem;
     border-radius: 999px;
-    color: var(--text-soft);
-    transition: 0.2s ease;
+    background: #f7f2e8;
+    color: var(--muted);
 }
 
-.site-nav a:hover,
-.site-nav a.is-active {
-    background: var(--accent);
+.menu a.ativo {
+    background: var(--primary);
     color: #fff;
 }
 
-/* Hero da página inicial com destaque visual maior */
-.hero {
-    padding: 5.5rem 0 3rem;
+/* Área principal de destaque */
+.destaque,
+.subdestaque {
+    padding: 4rem 0 2rem;
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-.hero h1,
-.subhero h1 {
-    font-size: clamp(2rem, 4vw, 3.6rem);
+.destaque h1,
+.subdestaque h1 {
+    font-size: 2.4rem;
     margin-bottom: 1rem;
 }
 
-/* Texto introdutório em destaque */
-.lead {
-    font-size: 1.1rem;
-    color: var(--text-soft);
+.texto-destaque {
+    color: var(--muted);
     margin-bottom: 1rem;
 }
 
-.eyebrow {
+.etiqueta {
     display: inline-block;
     margin-bottom: 0.8rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 999px;
-    background: rgba(33, 78, 90, 0.1);
-    color: var(--accent);
-    font-size: 0.88rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    color: var(--primary-dark);
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
     text-transform: uppercase;
 }
 
-/* Grupo de botões da abertura do site */
-.hero-actions {
+.acoes-destaque {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.9rem;
+    gap: 0.8rem;
     margin-top: 1.5rem;
 }
 
-.button {
+.botao,
+.botao-secundario {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.85rem 1.2rem;
+    padding: 0.75rem 1.2rem;
     border-radius: 999px;
-    background: var(--primary);
-    color: #fff;
     font-weight: 700;
 }
 
-.button:hover {
-    background: var(--primary-dark);
-}
-
-.button-secondary {
-    background: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-}
-
-.button-secondary:hover {
-    background: var(--accent);
+.botao {
+    background: var(--primary);
     color: #fff;
 }
 
-/* Cartões reutilizados em várias partes do layout */
-.hero-card,
-.info-card,
-.story-card,
-.split-card,
-.tip-card,
-.resource-card,
-.conclusion-box {
+.botao-secundario {
+    background: #fff;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.botao:hover,
+.botao-secundario:hover {
+    background: var(--primary-dark);
+    color: #fff;
+}
+
+/* Layout simples de grade para as seções */
+.grade-destaque,
+.grade-cartoes,
+.grade-historias,
+.grade-dicas,
+.grade-recursos,
+.caixa-dupla {
+    display: grid;
+    gap: 1rem;
+}
+
+.grade-destaque {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+}
+
+.grade-cartoes,
+.grade-historias,
+.grade-dicas,
+.grade-recursos,
+.caixa-dupla {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Cartões do site */
+.cartao-destaque,
+.cartao,
+.cartao-historia,
+.cartao-dica,
+.cartao-recurso,
+.cartao-duplo,
+.caixa-conclusao,
+.item-tempo,
+.painel-links a {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 22px;
-    box-shadow: var(--shadow);
+    border-radius: 16px;
+    padding: 1.3rem;
 }
 
-.hero-card {
-    padding: 1.5rem;
+.secao {
+    padding: 1.5rem 0;
 }
 
-/* Espaçamento padrão das seções */
-.section {
-    padding: 1.5rem 0 3rem;
+.secao-destaque {
+    background: #faf3e8;
 }
 
-/* Variação visual para alternar o fundo de algumas seções */
-.section-contrast {
-    background: rgba(241, 229, 205, 0.55);
-}
-
-/* Cabeçalho textual de cada seção */
-.section-heading {
+.cabecalho-secao {
     max-width: 760px;
     margin-bottom: 1.5rem;
 }
 
-.section-heading h2 {
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
+.cabecalho-secao h2 {
+    font-size: 2rem;
     margin-bottom: 0.7rem;
 }
 
-.section-heading p {
-    color: var(--text-soft);
+.cabecalho-secao p,
+.cartao-destaque p,
+.cartao p,
+.cartao-historia p,
+.cartao-dica p,
+.cartao-recurso p {
+    color: var(--muted);
 }
 
-/* Grades para distribuir o conteúdo em colunas */
-.card-grid,
-.story-grid,
-.tips-grid,
-.resources-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.2rem;
-}
-
-.info-card,
-.story-card,
-.tip-card,
-.resource-card,
-.split-card {
-    padding: 1.4rem;
-}
-
-.info-card h3,
-.story-card h3,
-.tip-card h3,
-.resource-card h3,
-.split-card h3,
-.hero-card h2,
-.conclusion-box h2 {
+.cartao h3,
+.cartao-historia h3,
+.cartao-dica h3,
+.cartao-recurso h3,
+.cartao-duplo h3,
+.cartao-destaque h2,
+.caixa-conclusao h2 {
     margin-bottom: 0.8rem;
 }
 
-/* Lista usada para tópicos resumidos */
 .feature-list {
     list-style: none;
+    padding-left: 0;
     display: grid;
     gap: 0.7rem;
 }
 
 .feature-list li {
+    padding-left: 1rem;
     position: relative;
-    padding-left: 1.2rem;
 }
 
 .feature-list li::before {
-    content: "";
+    content: "•";
     position: absolute;
     left: 0;
-    top: 0.62rem;
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: var(--primary);
+    top: 0;
+    color: var(--primary);
 }
 
-/* Painel com links rápidos na página inicial */
-.link-panel {
+.painel-links {
     display: grid;
     gap: 1rem;
 }
 
-.link-panel a {
-    padding: 1rem 1.1rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    font-weight: 700;
+.painel-links a {
+    width: fit-content;
 }
 
-.link-panel a:hover {
-    border-color: var(--primary);
-    color: var(--primary-dark);
-}
-
-/* Bloco em duas colunas para direitos e deveres */
-.split-box {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.2rem;
-    margin-top: 1.5rem;
-}
-
-/* Hero menor usado nas páginas internas */
-.subhero {
-    padding: 4.6rem 0 1.5rem;
-}
-
-/* Linha do tempo simples usada nas dicas práticas */
-.timeline {
+.linha-tempo {
     display: grid;
     gap: 1rem;
 }
 
-.timeline-item {
-    display: grid;
+.item-tempo {
     grid-template-columns: auto 1fr;
-    gap: 1rem;
-    align-items: start;
-    padding: 1.2rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    box-shadow: var(--shadow);
+    align-items: flex-start;
 }
 
-.timeline-number {
+.numero-tempo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--primary);
     color: #fff;
     font-weight: 700;
 }
 
-/* Caixa destacada para a conclusão */
-.conclusion-box {
-    padding: 2rem;
-}
-
-/* Rodapé compartilhado */
-.site-footer {
-    padding: 1.5rem 0 2rem;
-    border-top: 1px solid rgba(219, 200, 165, 0.8);
-    background: rgba(255, 253, 248, 0.86);
-}
-
-.footer-wrap {
+.rodape {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
 }
 
-.footer-wrap p {
-    color: var(--text-soft);
+.rodape-site {
+    padding: 1.5rem 0 2rem;
+    background: #fff;
+    border-top: 1px solid var(--border);
 }
 
-.footer-link {
+.rodape p {
+    color: var(--muted);
+}
+
+.link-rodape {
     color: var(--primary-dark);
     font-weight: 700;
 }
 
-.footer-link:hover,
-.resource-card a:hover {
+.link-rodape:hover {
     text-decoration: underline;
 }
 
-/* Ajustes visuais para tablets e telas médias */
 @media (max-width: 900px) {
-    .hero-grid,
-    .card-grid,
-    .story-grid,
-    .tips-grid,
-    .resources-grid,
-    .split-box {
+    .grade-destaque,
+    .grade-cartoes,
+    .grade-historias,
+    .grade-dicas,
+    .grade-recursos,
+    .caixa-dupla {
         grid-template-columns: 1fr;
     }
 
-    .header-wrap,
-    .footer-wrap {
+    .topo,
+    .rodape {
         flex-direction: column;
         align-items: flex-start;
     }
 }
 
-/* Ajustes finais para celulares */
 @media (max-width: 600px) {
-    .hero {
-        padding-top: 4.5rem;
-    }
-
-    .site-nav {
-        gap: 0.45rem;
-    }
-
-    .site-nav a,
-    .button,
-    .button-secondary {
+    .menu,
+    .acoes-destaque {
         width: 100%;
-        justify-content: center;
     }
 
-    .hero-actions {
+    .menu a,
+    .botao,
+    .botao-secundario {
         width: 100%;
+        text-align: center;
     }
 }
